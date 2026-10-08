@@ -22,10 +22,6 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* ==================================================
-   GLOBAL
-   ================================================== */
-
 .stApp {
     background:
         radial-gradient(
@@ -43,11 +39,6 @@ st.markdown("""
     max-width: 1250px;
 }
 
-
-/* ==================================================
-   SCROLLBAR
-   ================================================== */
-
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -60,11 +51,6 @@ st.markdown("""
     background: #168f4d;
     border-radius: 10px;
 }
-
-
-/* ==================================================
-   HERO
-   ================================================== */
 
 .debugbuddy-title {
     text-align: center;
@@ -104,11 +90,6 @@ st.markdown("""
     margin-bottom: 30px;
 }
 
-
-/* ==================================================
-   FEATURE SELECTOR
-   ================================================== */
-
 div[role="radiogroup"] {
     gap: 10px;
 }
@@ -120,11 +101,6 @@ div[role="radiogroup"] label {
     padding: 8px 15px;
 }
 
-
-/* ==================================================
-   SECTION TITLES
-   ================================================== */
-
 .section-title {
     font-size: 23px;
     font-weight: 800;
@@ -132,11 +108,6 @@ div[role="radiogroup"] label {
     margin-top: 15px;
     margin-bottom: 10px;
 }
-
-
-/* ==================================================
-   FEATURE CARDS
-   ================================================== */
 
 .feature-card {
     border: 1px solid rgba(0, 255, 120, 0.16);
@@ -178,22 +149,12 @@ div[role="radiogroup"] label {
     color: #a8c5b0;
 }
 
-
-/* ==================================================
-   CODE EDITOR CONTAINER
-   ================================================== */
-
 .code-editor-title {
     color: #72ff9f;
     font-size: 15px;
     font-weight: 700;
     margin-bottom: 7px;
 }
-
-
-/* ==================================================
-   RESULT CARDS
-   ================================================== */
 
 .result-card {
     border: 1px solid rgba(0, 255, 120, 0.15);
@@ -213,44 +174,6 @@ div[role="radiogroup"] label {
     color: #d9f4df;
     line-height: 1.65;
 }
-
-
-/* ==================================================
-   STATUS CARDS
-   ================================================== */
-
-.debug-status {
-    border-radius: 14px;
-    padding: 20px;
-
-    border: 1px solid rgba(0, 255, 120, 0.18);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(0, 255, 120, 0.07),
-            rgba(0, 255, 120, 0.02)
-        );
-
-    text-align: center;
-}
-
-.status-title {
-    font-size: 20px;
-    font-weight: 800;
-    color: #72ff9f;
-}
-
-.status-subtitle {
-    font-size: 12px;
-    color: #8eaf97;
-    margin-top: 4px;
-}
-
-
-/* ==================================================
-   BUTTONS
-   ================================================== */
 
 .stButton > button {
     border-radius: 10px;
@@ -284,11 +207,6 @@ div[role="radiogroup"] label {
     transform: translateY(-1px);
 }
 
-
-/* ==================================================
-   INPUT BOXES
-   ================================================== */
-
 .stTextArea textarea {
     background: #09150e !important;
     color: #d9f4df !important;
@@ -303,29 +221,14 @@ div[role="radiogroup"] label {
         monospace !important;
 }
 
-
-/* ==================================================
-   SELECT BOX
-   ================================================== */
-
 .stSelectbox > div > div {
     background: #09150e;
     border-color: #193d28;
 }
 
-
-/* ==================================================
-   DIVIDER
-   ================================================== */
-
 hr {
     border-color: rgba(0, 255, 120, 0.12);
 }
-
-
-/* ==================================================
-   FOOTER
-   ================================================== */
 
 .footer {
     text-align: center;
@@ -340,19 +243,9 @@ hr {
     font-size: 13px;
 }
 
-
-/* ==================================================
-   SUCCESS MESSAGE
-   ================================================== */
-
 div[data-testid="stAlert"] {
     border-radius: 12px;
 }
-
-
-/* ==================================================
-   CODE OUTPUT
-   ================================================== */
 
 pre {
     border-radius: 12px !important;
@@ -612,19 +505,10 @@ if feature == "🐞 Debug an Error":
             with info1:
 
                 st.markdown(
-                    f"""
-                    <div class="debug-status">
-                        <div class="status-title">
-                            🔴 {result.get("error_type", "Unknown")}
-                        </div>
-
-                        <div class="status-subtitle">
-                            ERROR TYPE
-                        </div>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
+                    f"### 🔴 {result.get('error_type', 'Unknown')}"
                 )
+
+                st.caption("ERROR TYPE")
 
 
             with info2:
@@ -634,23 +518,14 @@ if feature == "🐞 Debug an Error":
                 line_text = (
                     "Unknown"
                     if line is None
-                    else str(line)
+                    else f"Line {line}"
                 )
 
                 st.markdown(
-                    f"""
-                    <div class="debug-status">
-                        <div class="status-title">
-                            📍 Line {line_text}
-                        </div>
-
-                        <div class="status-subtitle">
-                            PROBLEM LOCATION
-                        </div>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
+                    f"### 📍 {line_text}"
                 )
+
+                st.caption("PROBLEM LOCATION")
 
 
             # ==================================================
